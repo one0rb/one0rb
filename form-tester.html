@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form tester</title>
+  </head>
+
+  <body>
+    <h1>Forms tester</h1>
+
+    <form action="/tacos">
+      <p>
+        <!-- Make sure label is linked to input id -->
+        <label for="username">Enter a Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="username"
+        />
+      </p>
+      <p>
+        <label for="password">Enter a Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+        />
+      </p>
+      <p>
+        <label for="color">Pick a Colour:</label>
+        <input type="color" id="color" name="color" />
+      </p>
+      <p>
+        <!-- Alternative way to label an input (less common) -->
+        <label>
+          Enter a number:
+          <input type="number" placeholder="enter a number" name="num" />
+        </label>
+      </p>
+      <button>Submit</button>
+      <button type="submit">This also submits</button><br />
+      <button type="reset">Reset</button>
+      <button type="button">Just a button</button>
+    </form>
+    <hr />
+    <button>This is also just a button</button>
+    <hr />
+    <form action="https://duckduckgo.com/">
+      <input type="text" id="search" name="q" />
+      <button>Search DuckDuckGo</button>
+    </form>
+    <hr />
+    <h2>More Inputs!</h2>
+    <form action="/golf">
+      <input type="checkbox" name="agrees_to" id="agree" checked />
+      <label for="agree">I agree to everything</label>
+      <p>
+        <label for="slider">Slider:</label>
+        <input type="radio" name="size" id="slider" value="slid" />
+        <label for="single">Regular:</label>
+        <input type="radio" name="size" id="single" value="sing" checked />
+        <label for="double">Double:</label>
+        <input type="radio" name="size" id="double" value="doub" />
+      </p>
+      <p>
+        <label for="meal">Please select your burger patty:</label>
+        <select name="meal" id="meal">
+          <option value="">--Please choose an option--</option>
+          <option value="fish">Salmon</option>
+          <option value="veg">Mushroom</option>
+          <option value="meat">Beef</option>
+        </select>
+      </p>
+      <p>
+        <label for="cheese">Amount of Cheese:</label>
+        <input
+          type="range"
+          id="cheese"
+          name="cheese"
+          min="0"
+          max="10"
+          value="0"
+          step="2"
+        />
+      </p>
+      <p>
+        <label for="requests">Any Other Requests?</label><br />
+        <textarea
+          name="other"
+          id="requests"
+          cols="45"
+          rows="2"
+          placeholder="e.g. Any allergies or dietary requirements"
+        ></textarea>
+      </p>
+      <button>Submit</button>
+    </form>
+    <hr />
+    <h2>Validations Demo</h2>
+    <form action="/dummy">
+      <p>
+        <label for="first">Enter your First Name:</label>
+        <input type="text" id="first" name="first" required />
+      </p>
+      <p>
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="user"
+          minlength="5"
+          maxlength="20"
+          required
+        />
+      </p>
+      <p>
+        <input type="email" placeholder="email" required />
+      </p>
+      <p>
+        <input type="url" placeholder="url" required />
+      </p>
+      <p>
+        <input type="tel" placeholder="tel" required />
+      </p>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
