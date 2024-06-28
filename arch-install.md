@@ -2,6 +2,7 @@
 Adapted/taken from the *[ArchWiki Installation guide](https://wiki.archlinux.org/title/Installation_guide?ref=bluelinden.art)*  
 >[!IMPORTANT]
 >Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
+
 >[!TIP]
 >For more information/details on each step, look for the disclosure widgets!
 
@@ -21,16 +22,16 @@ Changing the console font is also optional, but it might be a good idea to chang
 ```
 # loadkeys "country_code"
 ```
-```bash
+```
 # setfont "console_font"
 ```
-
+<br>
 **Verify boot mode**
-```bash
+```
 # cat /sys/firmware/efi/fw_platform_size
 ```
 <details>
-<summary>Should return `64`</summary>
+<summary>Should return <code>64</code></summary>
 
 If the command returns `64`, then the system is booted in UEFI mode and has a 64-bit x64 UEFI. Exactly what we need for this installation.
 
@@ -41,37 +42,40 @@ If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'
 
 ### Connect to the internet
 <details>
-<summary><strong>How to connect to Wi-Fi</strong></summary>
+<summary><strong>Connecting to Wi-Fi</strong></summary>
 
-to be continued
+<summary><strong>Will this appear....</strong></summary>
+...inside???!!!
+</details>
 
-```bash
-iwctl
 ```
-```bash
+# iwctl
+```
+```
 [iwd]# device list
 ```
-```bash
+```
 [iwd]# station "wlan0" scan
 ```
-```bash
+```
 [iwd]# station "wlan0" get-networks
 ```
-```bash
+```
 [iwd]# station "wlan0" connect "fanling/fanling_5G"
 ```
-```bash
-Passphrase: ********
 ```
-**Ctrl + D** to exit
+    Passphrase: ********
+```
+**'Ctrl + D'** to exit
+</details>
 
 #### How to test network connection
-```bash
-ping archlinux.org
+```
+# ping archlinux.org
 ```
 Should see byte reply from archlinux.org
 
-**Ctrl + C** to stop ping reply
+**'Ctrl + C'** to stop ping reply
 
 ### Update the system clock
 ```bash
