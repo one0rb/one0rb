@@ -1,12 +1,19 @@
 # My Arch Install Guide
+Adapted/taken from the *[ArchWiki Installation guide](https://wiki.archlinux.org/title/Installation_guide?ref=bluelinden.art)*  
+Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
+Click on each step for more detailed information
 ## Getting the installation image
 ## Pre-installation stage
-### Set console keyboard layout and font
-```bash
-loadkeys "uk"
+<details><summary>Set console keyboard layout and font</summary>
+    An optional step if happy with the default settings of a *US* console keymap. Otherwise the available layouts can be listed with `localectl list-keymaps`, *I'll most likely need to change the keymap to "uk"*.
+    
+    Changing the console font is also optional, but it might be a good idea to change to a larger font to see the command line more clearly. Again, a list of available fonts can be found in `/usr/share/kbd/consolefonts/`, just need to omit the path and file extension. *I found "ter-120b" worked great on my laptop, clear and not too big.*
+    </details>
+```
+# loadkeys "country_code"
 ```
 ```bash
-setfont "ter-120b"
+setfont "console_font"
 ```
 
 ### Verify boot mode
