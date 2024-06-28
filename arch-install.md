@@ -20,13 +20,14 @@ Changing the console font is also optional, but it might be a good idea to chang
 </details>
 
 ```
-# loadkeys "country_code"
+# loadkeys <em>"country_code"</em>
 ```
 ```
 # setfont "console_font"
 ```
 <br>
 **Verify boot mode**
+
 ```
 # cat /sys/firmware/efi/fw_platform_size
 ```
@@ -44,10 +45,7 @@ If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'
 <details>
 <summary><strong>Connecting to Wi-Fi</strong></summary>
 
-<summary><strong>Will this appear....</strong></summary>
-...inside???!!!
-</details>
-
+**To enter the interactive prompt for the iNet Wireless Daemon (***iwd*** package)**
 ```
 # iwctl
 ```
@@ -66,7 +64,7 @@ If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'
 ```
     Passphrase: ********
 ```
-**'Ctrl + D'** to exit
+<kbd>Ctrl</kbd> + <kbd>D</kbd> to exit
 </details>
 
 #### How to test network connection
