@@ -4,11 +4,13 @@ Any text within double quotes in the code blocks need to be replaced with the va
 Click on each step for more detailed information
 ## Getting the installation image
 ## Pre-installation stage
-<details><summary>Set console keyboard layout and font</summary>
-An optional step if happy with the default settings of a *US* console keymap. Otherwise the available layouts can be listed with `localectl list-keymaps`, *I'll most likely need to change the keymap to "uk"*.
+<details><summary><strong>Set console keyboard layout and font</strong></summary>
+
+An optional step if happy with the default settings of a <em>US</em> console keymap. Otherwise the available layouts can be listed with `localectl list-keymaps`, <em>I'll most likely need to change the keymap to "uk"</em>.
     
-Changing the console font is also optional, but it might be a good idea to change to a larger font to see the command line more clearly. Again, a list of available fonts can be found in `/usr/share/kbd/consolefonts/`, just need to omit the path and file extension. *I found "ter-120b" worked great on my laptop, clear and not too big.*
+Changing the console font is also optional, but it might be a good idea to change to a larger font to see the command line more clearly. Again, a list of available fonts can be found in `/usr/share/kbd/consolefonts/`, just need to omit the path and file extension. <em>I found "ter-120b" worked great on my laptop, clear and not too big.</em>
 </details>
+
 ```
 # loadkeys "country_code"
 ```
