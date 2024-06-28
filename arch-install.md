@@ -45,52 +45,53 @@ If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'
 
 **Connect to the internet**  
 <details>
-<summary>Either via Ethernet...</summary>
+<summary><em>Either via Ethernet...</em></summary>
 
 Just plug in that cable!
 </details>
 
 <details>
-<summary><strong>... or via Wi-Fi</strong></summary>
+<summary><em>... or via Wi-Fi</em></summary>
 
-**Enter the interactive prompt for the iNet Wireless Daemon (***iwd*** package)**
+Enter the interactive prompt for the iNet Wireless Daemon (*iwd* package)
 ```
 # iwctl
 ```
-Note the change in the command prompt.  
+(Note the change in the command prompt.)  
 Find the name of your wireless device using the following command:
 ```
 [iwd]# device list
 ```
-Use the following commands to first scan for available Wi-Fi networks, then output the list to view. 
+Use the following commands to first scan for available Wi-Fi networks, then output the list to view:
 ```
 [iwd]# station "device_name" scan
 ```
 ```
 [iwd]# station "device_name" get-networks
 ```
-Connect to the network with the following command and enter the passphrase at the prompt. 
+Connect to the network with the following command and enter the passphrase at the following prompt:
 ```
 [iwd]# station "device_name" connect "SSID"
 ```
 ```
     Passphrase: ********
 ```
-Exit the interactive prompt by pressing:
+Exit the interactive prompt by pressing:  
 <kbd>Ctrl</kbd> + <kbd>D</kbd>
 </details>
 
-#### How to test network connection
+
+*Then, test the network connection*
+Check for byte replies by 'pinging' a website:
 ```
 # ping archlinux.org
 ```
-Should see byte reply from archlinux.org
+To stop:
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
 
-**'Ctrl + C'** to stop ping reply
-
-### Update the system clock
-```bash
-timedatectl
+**Update the system clock**
+```
+# timedatectl
 ```
 
 ### Partition the disks
@@ -111,22 +112,22 @@ fdisk /dev/"mmcblk0"
 Command (m for help):
 ```
 Create ESP partition
-1. "n"
-2. "1"
-3. "&#x23CE;"
-4. "+1G"
-5. "t"
-6. ("L" to see the list of all types)
-7. "1"
+1. <kbd>n</kbd>
+2. <kbd>1</kbd>
+3. <kbd>&#x23CE;</kbd>
+4. <kbd>+<<kbd><kbd>1</kbd><kbd>G</kbd>
+5. <kbd>t</kbd>
+6. (<kbd>L</kbd> to see the list of all types)
+7. <kbd>1</kbd>
 
 Create root partition
-1. "n"
-2. "2"
-3. "&#x23CE;"
-4. "&#x23CE;"
+1. <kbd>n</kbd>
+2. <kbd>2</kbd>
+3. <kbd>&#x23CE;</kbd>
+4. <kbd>&#x23CE;</kbd>
 
 Write all changes to the disk
-1. "w"
+1. <kbd>w</kbd>
 
 ### Format the partitions
 <details><summary><em>Format EFI system partition</em></summary>
@@ -135,58 +136,58 @@ Here we are adding a file system to the ESP. Instead of the usual Linux EXT4 fil
 Make sure you include the ESP partition extension to the name of the drive when entering the command.
 </details>
 
-```bash
-mkfs.fat -F 32 /dev/"mmcblk0p1"
+```
+# mkfs.fat -F 32 /dev/"mmcblk0p1"
 ```
 
 Format root partition
-```bash
-mkfs.ext4 /dev/"mmcblk0p2"
+```
+# mkfs.ext4 /dev/"mmcblk0p2"
 ```
 
 ### Mount the file systems
-```bash
-mount /dev/"mmcblk0p2" /mnt
 ```
-```bash
-mount -m /dev/"mmcblk0p1" /mnt/boot
+# mount /dev/"mmcblk0p2" /mnt
+```
+```
+# mount -m /dev/"mmcblk0p1" /mnt/boot
 ```
 
 ## Installation stage
 ### Select mirror
-```bash
-pacman -Syy
 ```
-```bash
-pacman -S reflector
+# pacman -Syy
+```
+```
+# pacman -S reflector
 ```
 Backup mirror list
-```bash
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist_bak
+```
+# cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 ```
 Update mirror list to local region
-```bash
-reflector -c ""HK"" -f 12 -l 10 -n 10 --save /etc/pacman.d/mirrorlist
+```
+# reflector -c ""HK"" -f 12 -l 10 -n 10 --save /etc/pacman.d/mirrorlist
 ```
 Double check
-```bash
-nano /etc/pacman.d/mirrorlist
+```
+# nano /etc/pacman.d/mirrorlist
 ```
 
 ### Install essential packages
-```bash
-pacstrap -K /mnt base linux linux-firmware nano networkmanager sudo efibootmgr
+```
+# pacstrap -K /mnt base linux linux-firmware nano networkmanager sudo efibootmgr
 ```
 
 ## Configure the system
 ### Fstab
-```bash
-genfstab -U /mnt >> /mnt/etc/fstab
+```
+# genfstab -U /mnt >> /mnt/etc/fstab
 ```
 Check file
 
 ### Chroot
-```bash
+```
 arch-chroot /mnt
 ```
 
