@@ -1,31 +1,50 @@
 # My Arch Install Guide
 Adapted/taken from the *[ArchWiki Installation guide](https://wiki.archlinux.org/title/Installation_guide?ref=bluelinden.art)*  
-Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
-Click on each step for more detailed information
-## Getting the installation image
-## Pre-installation stage
-<details><summary><strong>Set console keyboard layout and font</strong></summary>
+>[!IMPORTANT]
+>Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
+>[!TIP]
+>For more information/details on each step, look for the disclosure widgets!
 
-An optional step if happy with the default settings of a <em>US</em> console keymap. Otherwise the available layouts can be listed with `localectl list-keymaps`, <em>I'll most likely need to change the keymap to "uk"</em>.
+## Getting the installation image
+
+## Pre-installation stage
+<details>
+<summary><strong>Set console keyboard layout and font</strong></summary>
+
+An optional step if happy with the default settings of a <em>US</em> console keymap. Otherwise the available layouts can be listed with `localectl list-keymaps`.  
+<em>I'll most likely need to change the keymap to "uk".</em>
     
-Changing the console font is also optional, but it might be a good idea to change to a larger font to see the command line more clearly. Again, a list of available fonts can be found in `/usr/share/kbd/consolefonts/`, just need to omit the path and file extension. <em>I found "ter-120b" worked great on my laptop, clear and not too big.</em>
+Changing the console font is also optional, but it might be a good idea to change to a larger font to see the command line more clearly. Again, a list of available fonts can be found in `/usr/share/kbd/consolefonts/`, just need to omit the path and file extension.  
+<em>I found "ter-120b" worked great on my laptop, clear and not too big.</em>
 </details>
 
 ```
 # loadkeys "country_code"
 ```
 ```bash
-setfont "console_font"
+# setfont "console_font"
 ```
 
-### Verify boot mode
+**Verify boot mode**
 ```bash
-cat /sys/firmware/efi/fw_platform_size
+# cat /sys/firmware/efi/fw_platform_size
 ```
-Should return `64`
+<details>
+<summary>Should return `64`</summary>
+
+If the command returns `64`, then the system is booted in UEFI mode and has a 64-bit x64 UEFI. Exactly what we need for this installation.
+
+If the command returns `32`, then the system is booted in UEFI mode and has a 32-bit IA32 UEFI; you can still follow along but it will limit the boot loader choice later to <em>systemd-boot</em> and <em>GRUB</em>.
+
+If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'll need to look up another guide or look at how to change to UEFI mode.
+</details>
 
 ### Connect to the internet
-#### How to connect to Wi-Fi
+<details>
+<summary><strong>How to connect to Wi-Fi</strong></summary>
+
+to be continued
+
 ```bash
 iwctl
 ```
