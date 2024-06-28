@@ -1,5 +1,6 @@
 # My Arch Install Guide
 Adapted/taken from the *[ArchWiki Installation guide](https://wiki.archlinux.org/title/Installation_guide?ref=bluelinden.art)*  
+
 >[!IMPORTANT]
 >Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
 
@@ -20,12 +21,13 @@ Changing the console font is also optional, but it might be a good idea to chang
 </details>
 
 ```
-# loadkeys <em>"country_code"</em>
+# loadkeys "country_code"
 ```
 ```
 # setfont "console_font"
 ```
 <br>
+
 **Verify boot mode**
 
 ```
@@ -41,30 +43,41 @@ If the command returns `32`, then the system is booted in UEFI mode and has a 32
 If the file does not exist, the system may be booted in BIOS (or CSM) mode. You'll need to look up another guide or look at how to change to UEFI mode.
 </details>
 
-### Connect to the internet
+**Connect to the internet**  
 <details>
-<summary><strong>Connecting to Wi-Fi</strong></summary>
+<summary>Either via Ethernet...</summary>
 
-**To enter the interactive prompt for the iNet Wireless Daemon (***iwd*** package)**
+Just plug in that cable!
+</details>
+
+<details>
+<summary><strong>... or via Wi-Fi</strong></summary>
+
+**Enter the interactive prompt for the iNet Wireless Daemon (***iwd*** package)**
 ```
 # iwctl
 ```
+Note the change in the command prompt.  
+Find the name of your wireless device using the following command:
 ```
 [iwd]# device list
 ```
+Use the following commands to first scan for available Wi-Fi networks, then output the list to view. 
 ```
-[iwd]# station "wlan0" scan
-```
-```
-[iwd]# station "wlan0" get-networks
+[iwd]# station "device_name" scan
 ```
 ```
-[iwd]# station "wlan0" connect "fanling/fanling_5G"
+[iwd]# station "device_name" get-networks
+```
+Connect to the network with the following command and enter the passphrase at the prompt. 
+```
+[iwd]# station "device_name" connect "SSID"
 ```
 ```
     Passphrase: ********
 ```
-<kbd>Ctrl</kbd> + <kbd>D</kbd> to exit
+Exit the interactive prompt by pressing:
+<kbd>Ctrl</kbd> + <kbd>D</kbd>
 </details>
 
 #### How to test network connection
