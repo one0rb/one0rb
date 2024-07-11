@@ -9,7 +9,7 @@ date <- mdy(<date>)
 # function to convert date ranges according to admango's output 
 # TODO: adjust to mutate the imported data frame?
 date_start <- mdy(str_sub(<date>, 1, 11))
-date_end <- mdy(str_sub(<date>, 1, 11))
+date_end <- mdy(str_sub(<date>, -1, -11))
 
 # gantt chart?
 ggplot(<data.frame>, aes(<date>, <ad_type or url>)) +
