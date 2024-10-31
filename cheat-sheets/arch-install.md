@@ -1,7 +1,7 @@
 # My Arch Install Guide
 Adapted/taken from the *[ArchWiki Installation guide](https://wiki.archlinux.org/title/Installation_guide?ref=bluelinden.art)*  
 
->[!IMPORTANT]
+>[!important]
 >Any text within double quotes in the code blocks need to be replaced with the variable you require **without** the double quotes  
 
 >[!TIP]
